@@ -79,8 +79,8 @@ export function AuthProvider({ children }) {
 
   const demoLogin = async (type = 'admin') => {
     const credentials = type === 'admin'
-      ? { emailOrUsername: 'elena@auralis.ai', password: 'password123' }
-      : { emailOrUsername: 'marcus@devstack.io', password: 'password123' };
+      ? { emailOrUsername: 'alex@example.com', password: 'password123' }
+      : { emailOrUsername: 'sophia@example.com', password: 'password123' };
 
     return login(credentials.emailOrUsername, credentials.password);
   };

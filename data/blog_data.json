@@ -1,73 +1,83 @@
 {
   "users": [
     {
-      "id": "usr_admin_1",
-      "username": "elena_ai",
-      "name": "Elena Rostova",
-      "email": "elena@auralis.ai",
-      "passwordHash": "$2a$10$wEkgmYF1kQd3a3y69F3lpejHkWjE43WlK1mG58mF7xN0bM9y64eTu",
+      "id": "usr_alex_1",
+      "username": "alex_rivera",
+      "name": "Alex Rivera",
+      "email": "alex@example.com",
+      "passwordHash": "$2a$10$lBukgGPLR/iwKTdRvrVulOhAj0z61N96nuvEdLofwWxhAcSmmJ5Sa",
       "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80",
-      "bio": "Chief AI Architect at Auralis. Scaling ultra-low latency voice models.",
+      "bio": "Full-stack developer passionate about React, Node.js, and teaching web engineering.",
       "role": "admin",
       "createdAt": "2026-09-01T10:00:00.000Z"
     },
     {
-      "id": "usr_dev_2",
-      "username": "marcus_k",
-      "name": "Marcus Vance",
-      "email": "marcus@devstack.io",
-      "passwordHash": "$2a$10$wEkgmYF1kQd3a3y69F3lpejHkWjE43WlK1mG58mF7xN0bM9y64eTu",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80",
-      "bio": "Full-Stack Engineer & Audio Streaming Enthusiast. WebSockets, Node.js, Next.js.",
+      "id": "usr_sophia_2",
+      "username": "sophia_chen",
+      "name": "Sophia Chen",
+      "email": "sophia@example.com",
+      "passwordHash": "$2a$10$lBukgGPLR/iwKTdRvrVulOhAj0z61N96nuvEdLofwWxhAcSmmJ5Sa",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=250&q=80",
+      "bio": "Frontend engineer & UI enthusiast. Writing about modern web design and clean code.",
       "role": "member",
       "createdAt": "2026-09-15T12:30:00.000Z"
     },
     {
-      "id": "usr_1791896396815_5gi1b",
-      "createdAt": "2026-10-13T12:59:56.815Z",
-      "role": "member",
-      "avatar": "https://api.dicebear.com/7.x/identicon/svg?seed=tester_6815",
-      "bio": "Exploring voice AI and full-stack software development.",
-      "username": "tester_6815",
-      "email": "tester_1791896396815@auralis.ai",
-      "passwordHash": "$2a$10$OmVq6LVjQjsMifnOyQ8s7.fLYQpO6nQV59c/OzkzBRDn0IcDmXtSG",
-      "name": "Test Runner"
+      "id": "usr_admin_demo",
+      "username": "admin",
+      "name": "Admin User",
+      "email": "admin@aurelius.dev",
+      "passwordHash": "$2a$10$lBukgGPLR/iwKTdRvrVulOhAj0z61N96nuvEdLofwWxhAcSmmJ5Sa",
+      "avatar": "https://api.dicebear.com/7.x/identicon/svg?seed=admin",
+      "bio": "Platform administrator.",
+      "role": "admin",
+      "createdAt": "2026-09-01T10:00:00.000Z"
     },
     {
-      "id": "usr_1791896733917_10731",
-      "createdAt": "2026-10-13T13:05:33.917Z",
+      "id": "usr_1791898314975_wsvhl",
+      "createdAt": "2026-10-13T13:31:54.975Z",
       "role": "member",
-      "avatar": "https://api.dicebear.com/7.x/identicon/svg?seed=tester_3917",
-      "bio": "Exploring voice AI and full-stack software development.",
-      "username": "tester_3917",
-      "email": "tester_1791896733917@auralis.ai",
-      "passwordHash": "$2a$10$xRTDVwQHGcAFpyd3nhcdhOYVJw73UKVw4saQlU.NBuyplZ1SWBhhm",
-      "name": "Test Runner"
+      "bio": "Tech enthusiast",
+      "username": "rohit_sharma",
+      "email": "rohit@example.com",
+      "name": "Rohit Sharma",
+      "passwordHash": "$2a$10$/vB6DKKAwTfO4FItbL8S3uJZX9yXZEF8Aiq9.Mk3KL.BEe/uZCtBe"
     },
     {
-      "id": "usr_1791897199102_tn87r",
-      "createdAt": "2026-10-13T13:13:19.102Z",
+      "id": "usr_1791898352078_w7w9m",
+      "createdAt": "2026-10-13T13:32:32.078Z",
       "role": "member",
-      "avatar": "https://api.dicebear.com/7.x/identicon/svg?seed=tester_9102",
+      "avatar": "https://api.dicebear.com/7.x/identicon/svg?seed=tester_2078",
       "bio": "Member of the blogging community.",
-      "username": "tester_9102",
-      "email": "tester_1791897199102@auralis.ai",
-      "passwordHash": "$2a$10$I1du42O2TjyqzA/w875hZO7gM/jZx.eUZADOlH6S6sy9MeCNL46xS",
-      "name": "Test Runner"
-    },
-    {
-      "id": "usr_1791897759876_bdu8s",
-      "createdAt": "2026-10-13T13:22:39.876Z",
-      "role": "member",
-      "avatar": "https://api.dicebear.com/7.x/identicon/svg?seed=tester_9876",
-      "bio": "Member of the blogging community.",
-      "username": "tester_9876",
-      "email": "tester_1791897759876@auralis.ai",
-      "passwordHash": "$2a$10$AZDW3M72I1NUvgV3OogpnOfxH7axHAH98kWLLP4x4sXWUxzH.4DSW",
+      "username": "tester_2078",
+      "email": "tester_1791898352078@auralis.ai",
+      "passwordHash": "$2a$10$8TB7QPArDQEcuqqyC0pJf.stNENtZxj3gNKgNj2sZCFW0B0poCAQ2",
       "name": "Test Runner"
     }
   ],
   "posts": [
+    {
+      "id": "post_1791898338913_4114o",
+      "slug": "testing-blog-creation-as-rohit-8913",
+      "likes": 1,
+      "likedBy": [
+        "usr_1791898314975_wsvhl"
+      ],
+      "createdAt": "2026-10-13T13:32:18.913Z",
+      "updatedAt": "2026-10-13T13:32:18.913Z",
+      "title": "Testing Blog Creation as Rohit",
+      "excerpt": "This is my first blog post to test full-stack functionality....",
+      "content": "This is my first blog post to test full-stack functionality.",
+      "category": "Web Dev",
+      "tags": [
+        "Testing",
+        "FirstPost"
+      ],
+      "coverImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+      "readTime": "1 min read",
+      "authorId": "usr_1791898314975_wsvhl",
+      "authorName": "Rohit Sharma"
+    },
     {
       "id": "post_3",
       "title": "Why Developer Experience (DX) Determines AI Platform Adoption",
@@ -140,6 +150,14 @@
     }
   ],
   "comments": [
+    {
+      "id": "comment_1791898339483_5frbg",
+      "createdAt": "2026-10-13T13:32:19.483Z",
+      "postId": "post_1791898338913_4114o",
+      "userId": "usr_1791898314975_wsvhl",
+      "userName": "Rohit Sharma",
+      "content": "First comment on my post!"
+    },
     {
       "id": "comment_1",
       "postId": "post_1",
