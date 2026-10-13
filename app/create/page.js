@@ -7,19 +7,16 @@ import { useAuth } from '@/components/AuthContext';
 import { 
   PenSquare, 
   Sparkles, 
-  Image as ImageIcon, 
   ArrowLeft, 
   Send, 
-  Terminal, 
   Eye, 
   FileText 
 } from 'lucide-react';
 
 const PRESET_IMAGES = [
-  { label: 'Voice AI Wave', url: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=1200&q=80' },
-  { label: 'Code & Terminal', url: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80' },
-  { label: 'Abstract Neon', url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80' },
-  { label: 'Cloud Architecture', url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80' },
+  { label: 'Code & Screen', url: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80' },
+  { label: 'Architecture', url: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80' },
+  { label: 'Abstract Gradient', url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80' },
 ];
 
 export default function CreatePostPage() {
@@ -27,11 +24,11 @@ export default function CreatePostPage() {
   const { user, demoLogin } = useAuth();
 
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('AI Infrastructure');
-  const [tags, setTags] = useState('Voice AI, Edge Computing, WebSockets');
+  const [category, setCategory] = useState('Web Dev');
+  const [tags, setTags] = useState('Full Stack, React, NextJS');
   const [coverImage, setCoverImage] = useState(PRESET_IMAGES[0].url);
   const [excerpt, setExcerpt] = useState('');
-  const [content, setContent] = useState(`Voice interfaces are transforming how humans interact with machines.\n\n### The Core Latency Challenge\nHuman conversation operates on a tightly-coupled temporal window. If an agent delays response beyond 150ms, conversational turns degrade.\n\n### Implementation Blueprint\nWe implement full-duplex audio chunk streaming directly over secure WebSockets.`);
+  const [content, setContent] = useState(`Building full-stack applications with clean architecture.\n\n### Core Design Principles\n1. Stateless authentication with JWT.\n2. Clean RESTful API endpoints.\n3. Responsive, accessible UI with optimistic updates.`);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [previewTab, setPreviewTab] = useState(false);
@@ -75,25 +72,25 @@ export default function CreatePostPage() {
 
   if (!user) {
     return (
-      <div className="max-w-md mx-auto py-20 text-center">
-        <div className="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-          <PenSquare className="w-8 h-8" />
+      <div className="max-w-md mx-auto py-24 text-center">
+        <div className="w-14 h-14 rounded-full bg-surface-container border border-outline-variant text-primary mx-auto mb-4 flex items-center justify-center">
+          <PenSquare className="w-6 h-6" />
         </div>
-        <h2 className="text-2xl font-bold text-white mb-2">Sign in to Publish</h2>
-        <p className="text-sm text-auralis-textMuted mb-6">
-          You must be an authenticated member to create and publish articles on the Auralis platform.
+        <h2 className="text-2xl font-bold tracking-tight text-on-surface mb-2">Sign in to Publish</h2>
+        <p className="text-sm text-on-surface-variant mb-6">
+          You must be an authenticated member to create and publish articles on Aurelius.
         </p>
         <div className="flex flex-col gap-3">
           <button
             onClick={() => demoLogin('admin')}
-            className="w-full py-2.5 rounded-xl bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 font-semibold text-sm hover:bg-cyan-900/60 transition-all flex items-center justify-center gap-2"
+            className="w-full py-3 rounded-full border border-outline-variant text-on-surface font-semibold text-sm hover:bg-surface-container transition-all flex items-center justify-center gap-2"
           >
-            <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-            1-Click Demo Login as Elena Rostova
+            <Sparkles className="w-4 h-4 text-primary" />
+            1-Click Demo Login
           </button>
           <Link
             href="/auth"
-            className="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-glow-indigo transition-all"
+            className="w-full py-3 rounded-full bg-primary text-on-primary font-semibold text-sm hover:opacity-90 transition-all shadow-sm"
           >
             Sign In with Email
           </Link>
@@ -103,11 +100,11 @@ export default function CreatePostPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto py-4 sm:py-8">
+    <div className="max-w-4xl mx-auto py-8">
       <div className="mb-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-auralis-textMuted hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-outline hover:text-on-surface transition-colors"
         >
           <ArrowLeft className="w-4 h-4" /> Cancel & Return
         </Link>
@@ -115,129 +112,122 @@ export default function CreatePostPage() {
 
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-extrabold text-white">Create New Article</h1>
-          <p className="text-sm text-auralis-textMuted mt-1">
-            Author: <span className="text-cyan-400 font-mono">{user.name || user.username}</span>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-on-surface">Create New Article</h1>
+          <p className="text-sm text-on-surface-variant mt-1">
+            Author: <span className="font-semibold text-on-surface">{user.name || user.username}</span>
           </p>
         </div>
 
-        <div className="flex items-center gap-2 bg-white/5 p-1 rounded-xl border border-white/10">
+        <div className="flex items-center gap-1 bg-surface-container p-1 rounded-full border border-outline-variant">
           <button
             type="button"
             onClick={() => setPreviewTab(false)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-              !previewTab ? 'bg-indigo-600 text-white' : 'text-auralis-textMuted hover:text-white'
+            className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
+              !previewTab ? 'bg-primary text-on-primary' : 'text-outline hover:text-on-surface'
             }`}
           >
-            <FileText className="w-3.5 h-3.5 inline mr-1" /> Editor
+            Editor
           </button>
           <button
             type="button"
             onClick={() => setPreviewTab(true)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-              previewTab ? 'bg-indigo-600 text-white' : 'text-auralis-textMuted hover:text-white'
+            className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
+              previewTab ? 'bg-primary text-on-primary' : 'text-outline hover:text-on-surface'
             }`}
           >
-            <Eye className="w-3.5 h-3.5 inline mr-1" /> Preview
+            Preview
           </button>
         </div>
       </div>
 
       {error && (
-        <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm">
+        <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm">
           {error}
         </div>
       )}
 
       {previewTab ? (
-        <div className="p-8 rounded-3xl bg-auralis-card border border-auralis-border space-y-6">
-          <div className="border-b border-white/10 pb-4">
-            <span className="text-xs px-2.5 py-1 rounded-full bg-indigo-500/20 text-cyan-300 border border-indigo-500/30">
-              {category}
-            </span>
-            <h2 className="text-3xl font-bold text-white mt-3">{title || 'Untitled Article'}</h2>
-            <p className="text-auralis-textMuted mt-2">{excerpt || 'No excerpt provided.'}</p>
-          </div>
+        <div className="p-8 rounded-[20px] bg-surface-container-lowest border border-outline-variant space-y-6">
+          <span className="text-xs px-3 py-1 rounded-full bg-surface-container text-on-surface border border-outline-variant">
+            {category}
+          </span>
+          <h2 className="text-3xl font-bold text-on-surface mt-3">{title || 'Untitled Article'}</h2>
+          <p className="text-on-surface-variant">{excerpt || 'No excerpt provided.'}</p>
           {coverImage && (
-            <img src={coverImage} alt="Cover Preview" className="w-full h-64 object-cover rounded-2xl" />
+            <img src={coverImage} alt="Cover Preview" className="w-full h-64 object-cover rounded-xl" />
           )}
-          <div className="prose prose-invert max-w-none whitespace-pre-line text-auralis-textLight/90">
+          <div className="prose max-w-none whitespace-pre-line text-on-surface leading-relaxed">
             {content}
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Title */}
+        <form onSubmit={handleSubmit} className="space-y-6 bg-surface-container-lowest p-8 rounded-[20px] border border-outline-variant shadow-sm">
           <div>
-            <label className="block text-xs font-mono text-auralis-textMuted uppercase mb-2">
+            <label className="block text-xs font-mono text-outline uppercase mb-2">
               Article Title *
             </label>
             <input
               type="text"
               required
-              placeholder="e.g. Building Ultra-Low Latency Voice Infrastructure"
+              placeholder="e.g. Mastering Full-Stack Development with React & Node"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-auralis-card border border-auralis-border text-lg font-bold text-white placeholder-auralis-textMuted/50 focus:outline-none focus:border-cyan-500"
+              className="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant text-lg font-bold text-on-surface placeholder-outline focus:outline-none focus:border-primary"
             />
           </div>
 
-          {/* Category & Tags */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-mono text-auralis-textMuted uppercase mb-2">
+              <label className="block text-xs font-mono text-outline uppercase mb-2">
                 Category
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-auralis-card border border-auralis-border text-sm text-white focus:outline-none focus:border-cyan-500"
+                className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant text-sm text-on-surface focus:outline-none focus:border-primary"
               >
-                <option value="AI Infrastructure">AI Infrastructure</option>
-                <option value="Web Engineering">Web Engineering</option>
-                <option value="SaaS Strategy">SaaS Strategy</option>
-                <option value="Developer Experience">Developer Experience</option>
+                <option value="Web Dev">Web Dev</option>
+                <option value="Tutorials">Tutorials</option>
+                <option value="Design">Design</option>
+                <option value="Software">Software</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-mono text-auralis-textMuted uppercase mb-2">
+              <label className="block text-xs font-mono text-outline uppercase mb-2">
                 Tags (comma separated)
               </label>
               <input
                 type="text"
-                placeholder="Voice AI, Next.js, WebSockets"
+                placeholder="React, REST API, Database"
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-auralis-card border border-auralis-border text-sm text-white placeholder-auralis-textMuted/50 focus:outline-none focus:border-cyan-500"
+                className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant text-sm text-on-surface placeholder-outline focus:outline-none focus:border-primary"
               />
             </div>
           </div>
 
-          {/* Cover Image */}
           <div>
-            <label className="block text-xs font-mono text-auralis-textMuted uppercase mb-2">
+            <label className="block text-xs font-mono text-outline uppercase mb-2">
               Cover Image URL
             </label>
             <input
               type="url"
-              placeholder="https://..."
               value={coverImage}
               onChange={(e) => setCoverImage(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-auralis-card border border-auralis-border text-sm text-white placeholder-auralis-textMuted/50 focus:outline-none focus:border-cyan-500 mb-2"
+              className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant text-sm text-on-surface focus:outline-none focus:border-primary mb-2"
             />
-            {/* Quick preset picker */}
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[11px] text-auralis-textMuted font-mono">Quick Presets:</span>
+              <span className="text-[11px] text-outline font-mono">Presets:</span>
               {PRESET_IMAGES.map((img, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => setCoverImage(img.url)}
-                  className={`text-xs px-2.5 py-1 rounded-lg border font-mono transition-all ${
+                  className={`text-xs px-3 py-1 rounded-full border transition-all ${
                     coverImage === img.url
-                      ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
-                      : 'bg-white/5 text-auralis-textMuted border-white/5 hover:text-white'
+                      ? 'bg-primary text-on-primary border-primary'
+                      : 'bg-surface-container text-on-surface border-outline-variant hover:bg-surface-container-high'
                   }`}
                 >
                   {img.label}
@@ -246,47 +236,44 @@ export default function CreatePostPage() {
             </div>
           </div>
 
-          {/* Excerpt */}
           <div>
-            <label className="block text-xs font-mono text-auralis-textMuted uppercase mb-2">
+            <label className="block text-xs font-mono text-outline uppercase mb-2">
               Short Summary / Excerpt
             </label>
             <input
               type="text"
-              placeholder="Brief summary that appears in article cards (optional)"
+              placeholder="Brief summary shown on the card feed"
               value={excerpt}
               onChange={(e) => setExcerpt(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-auralis-card border border-auralis-border text-sm text-white placeholder-auralis-textMuted/50 focus:outline-none focus:border-cyan-500"
+              className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant text-sm text-on-surface placeholder-outline focus:outline-none focus:border-primary"
             />
           </div>
 
-          {/* Content */}
           <div>
-            <label className="block text-xs font-mono text-auralis-textMuted uppercase mb-2">
+            <label className="block text-xs font-mono text-outline uppercase mb-2">
               Article Content (Markdown supported) *
             </label>
             <textarea
               required
               rows={12}
-              placeholder="Write your article body here. Use ### for subheadings, ``` for code snippets..."
+              placeholder="Write your article. Use ### for subheadings, ``` for code blocks..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-auralis-card border border-auralis-border text-sm text-white placeholder-auralis-textMuted/50 focus:outline-none focus:border-cyan-500 font-mono leading-relaxed"
+              className="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant text-sm text-on-surface placeholder-outline focus:outline-none focus:border-primary font-mono leading-relaxed"
             />
           </div>
 
-          {/* Submit */}
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-outline-variant flex items-center justify-end gap-3">
             <Link
               href="/"
-              className="px-5 py-2.5 rounded-xl text-sm font-semibold text-auralis-textMuted hover:text-white"
+              className="px-6 py-2.5 rounded-full text-sm font-semibold text-outline hover:text-on-surface"
             >
               Cancel
             </Link>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-semibold text-sm shadow-glow-indigo transition-all disabled:opacity-50 flex items-center gap-2"
+              className="px-8 py-3 rounded-full bg-primary text-on-primary font-semibold text-sm hover:opacity-90 active:scale-95 duration-200 transition-all shadow-sm disabled:opacity-50 flex items-center gap-2"
             >
               <Send className="w-4 h-4" />
               {isSubmitting ? 'Publishing...' : 'Publish Article'}

@@ -5,14 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from './AuthContext';
 import { 
-  BookOpen, 
   PenSquare, 
   LogIn, 
   LogOut, 
   Menu, 
   X, 
   Sparkles, 
-  Compass
+  BookOpen,
+  ArrowRight
 } from 'lucide-react';
 
 export default function Navbar() {
@@ -33,77 +33,67 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-auralis-border bg-auralis-bg/90 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-cyan-500 p-[1.5px] shadow-glow-indigo transition-transform group-hover:scale-105">
-            <div className="w-full h-full bg-auralis-bg rounded-[10px] flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-cyan-400" />
-            </div>
+    <nav className="fixed top-0 w-full z-50 border-b border-outline-variant bg-surface/85 backdrop-blur-xl transition-all shadow-sm">
+      <div className="max-w-[1280px] mx-auto px-6 h-20 flex justify-between items-center">
+        {/* Brand */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm tracking-tighter">
+            A
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold text-lg tracking-tight text-white group-hover:text-cyan-300 transition-colors">
-                DevBlog
-              </span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                COMMUNITY
-              </span>
-            </div>
-            <p className="text-[11px] text-auralis-textMuted hidden sm:block -mt-1">
-              Read, Write & Discuss
-            </p>
-          </div>
+          <span className="text-2xl font-bold tracking-tighter text-on-surface group-hover:opacity-80 transition-opacity">
+            Aurelius
+          </span>
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant font-medium">
+            Blog
+          </span>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-2">
+        {/* Navigation Links (Web) */}
+        <div className="hidden md:flex items-center space-x-8">
           <Link
             href="/"
-            className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-1.5 ${
+            className={`tracking-tight font-medium text-sm transition-all pb-1 ${
               pathname === '/'
-                ? 'text-white bg-indigo-500/15 border border-indigo-500/30 shadow-sm'
-                : 'text-auralis-textMuted hover:text-white hover:bg-white/5'
+                ? 'text-on-surface font-semibold border-b-2 border-on-surface'
+                : 'text-outline hover:text-on-surface'
             }`}
           >
-            <Compass className="w-4 h-4 text-cyan-400" />
-            Explore Articles
+            Articles
           </Link>
           <Link
             href="/create"
-            className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-1.5 ${
+            className={`tracking-tight font-medium text-sm transition-all pb-1 flex items-center gap-1.5 ${
               pathname === '/create'
-                ? 'text-white bg-indigo-500/15 border border-indigo-500/30 shadow-sm'
-                : 'text-auralis-textMuted hover:text-white hover:bg-white/5'
+                ? 'text-on-surface font-semibold border-b-2 border-on-surface'
+                : 'text-outline hover:text-on-surface'
             }`}
           >
-            <PenSquare className="w-4 h-4 text-indigo-400" />
+            <PenSquare className="w-3.5 h-3.5" />
             Write Post
           </Link>
-        </nav>
+        </div>
 
-        {/* User Account / Auth Actions */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Action Controls */}
+        <div className="hidden md:flex items-center space-x-4">
           {user ? (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center space-x-3">
               <Link
                 href="/create"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white text-sm font-medium hover:from-indigo-500 hover:to-cyan-500 shadow-glow-indigo transition-all transform hover:-translate-y-0.5"
+                className="bg-primary text-on-primary font-medium text-sm px-5 py-2.5 rounded-full hover:opacity-90 active:scale-95 duration-200 transition-all flex items-center gap-2 shadow-sm"
               >
                 <PenSquare className="w-4 h-4" />
                 Write Post
               </Link>
 
-              <div className="flex items-center gap-2.5 pl-2 border-l border-white/10">
+              <div className="flex items-center space-x-3 pl-3 border-l border-outline-variant">
                 <img
                   src={user.avatar || `https://api.dicebear.com/7.x/identicon/svg?seed=${user.username}`}
                   alt={user.name || user.username}
-                  className="w-8 h-8 rounded-full border border-indigo-500/40 object-cover"
+                  className="w-8 h-8 rounded-full border border-outline-variant object-cover"
                 />
                 <div className="text-left text-xs">
-                  <div className="font-semibold text-white leading-tight">{user.name || user.username}</div>
-                  <div className="text-auralis-textMuted text-[10px] capitalize font-mono text-cyan-400">
+                  <div className="font-semibold text-on-surface leading-tight">{user.name || user.username}</div>
+                  <div className="text-on-surface-variant text-[10px] capitalize font-mono">
                     {user.role}
                   </div>
                 </div>
@@ -111,47 +101,46 @@ export default function Navbar() {
                 <button
                   onClick={logout}
                   title="Sign out"
-                  className="p-1.5 rounded-lg text-auralis-textMuted hover:text-rose-400 hover:bg-rose-500/10 transition-colors ml-1"
+                  className="p-1.5 rounded-full text-outline hover:text-rose-600 hover:bg-rose-50 transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                 </button>
               </div>
             </div>
           ) : (
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center space-x-3">
               <button
                 onClick={handleQuickDemo}
                 disabled={isDemoLoading}
-                className="px-3 py-1.5 rounded-xl text-xs font-semibold text-cyan-300 bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-900/50 hover:border-cyan-400 transition-all flex items-center gap-1.5"
+                className="border border-outline-variant text-on-surface font-medium text-xs px-4 py-2 rounded-full hover:bg-surface-container transition-all flex items-center gap-1.5"
               >
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-                {isDemoLoading ? 'Loading...' : '1-Click Demo Login'}
+                <Sparkles className="w-3.5 h-3.5 text-primary" />
+                {isDemoLoading ? 'Loading...' : '1-Click Demo'}
               </button>
 
               <Link
                 href="/auth"
-                className="px-4 py-1.5 rounded-xl text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 shadow-glow-indigo transition-all flex items-center gap-1.5"
+                className="bg-primary text-on-primary font-medium text-sm px-6 py-2.5 rounded-full hover:opacity-90 active:scale-95 duration-200 transition-all shadow-sm"
               >
-                <LogIn className="w-4 h-4" />
                 Sign In
               </Link>
             </div>
           )}
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Toggle */}
         <div className="flex md:hidden items-center gap-2">
           {!user && (
             <button
               onClick={handleQuickDemo}
-              className="text-xs px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/30 font-medium"
+              className="text-xs px-3 py-1.5 rounded-full bg-surface-container text-on-surface border border-outline-variant font-medium"
             >
               Demo
             </button>
           )}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-auralis-textMuted hover:text-white hover:bg-white/5"
+            className="p-2 text-on-surface"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -160,34 +149,34 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-auralis-border bg-auralis-bg/95 p-4 space-y-3">
+        <div className="md:hidden border-t border-outline-variant bg-surface p-4 space-y-3">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-auralis-textLight hover:bg-white/5"
+            className="block px-4 py-2.5 rounded-xl text-sm font-medium text-on-surface hover:bg-surface-container"
           >
-            Explore Articles
+            Articles
           </Link>
           <Link
             href="/create"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-auralis-textLight hover:bg-white/5"
+            className="block px-4 py-2.5 rounded-xl text-sm font-medium text-on-surface hover:bg-surface-container"
           >
             Write Post
           </Link>
 
-          <div className="pt-3 border-t border-white/10">
+          <div className="pt-3 border-t border-outline-variant">
             {user ? (
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
                   <img
                     src={user.avatar}
                     alt={user.name}
-                    className="w-8 h-8 rounded-full border border-indigo-500/40"
+                    className="w-8 h-8 rounded-full border border-outline-variant"
                   />
                   <div>
-                    <div className="text-sm font-semibold text-white">{user.name}</div>
-                    <div className="text-xs text-cyan-400 font-mono">{user.email}</div>
+                    <div className="text-sm font-semibold text-on-surface">{user.name}</div>
+                    <div className="text-xs text-outline">{user.email}</div>
                   </div>
                 </div>
                 <button
@@ -195,7 +184,7 @@ export default function Navbar() {
                     logout();
                     setMobileMenuOpen(false);
                   }}
-                  className="px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-400 text-xs font-medium"
+                  className="px-4 py-1.5 rounded-full bg-rose-50 text-rose-600 text-xs font-semibold"
                 >
                   Logout
                 </button>
@@ -207,14 +196,14 @@ export default function Navbar() {
                     handleQuickDemo();
                     setMobileMenuOpen(false);
                   }}
-                  className="py-2 text-center rounded-lg bg-cyan-950/50 text-cyan-300 border border-cyan-500/30 text-sm font-medium"
+                  className="py-2.5 text-center rounded-full bg-surface-container text-on-surface border border-outline-variant text-xs font-semibold"
                 >
                   Demo Login
                 </button>
                 <Link
                   href="/auth"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="py-2 text-center rounded-lg bg-indigo-600 text-white text-sm font-medium"
+                  className="py-2.5 text-center rounded-full bg-primary text-on-primary text-xs font-semibold"
                 >
                   Sign In
                 </Link>
@@ -223,6 +212,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </header>
+    </nav>
   );
 }

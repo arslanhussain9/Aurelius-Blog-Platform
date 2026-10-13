@@ -54,6 +54,17 @@
       "email": "tester_1791897199102@auralis.ai",
       "passwordHash": "$2a$10$I1du42O2TjyqzA/w875hZO7gM/jZx.eUZADOlH6S6sy9MeCNL46xS",
       "name": "Test Runner"
+    },
+    {
+      "id": "usr_1791897759876_bdu8s",
+      "createdAt": "2026-10-13T13:22:39.876Z",
+      "role": "member",
+      "avatar": "https://api.dicebear.com/7.x/identicon/svg?seed=tester_9876",
+      "bio": "Member of the blogging community.",
+      "username": "tester_9876",
+      "email": "tester_1791897759876@auralis.ai",
+      "passwordHash": "$2a$10$AZDW3M72I1NUvgV3OogpnOfxH7axHAH98kWLLP4x4sXWUxzH.4DSW",
+      "name": "Test Runner"
     }
   ],
   "posts": [

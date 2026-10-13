@@ -14,9 +14,7 @@ import {
   Trash2, 
   Share2, 
   Check, 
-  Sparkles,
-  Terminal,
-  Bookmark
+  Terminal 
 } from 'lucide-react';
 
 export default function PostDetailPage() {
@@ -86,7 +84,7 @@ export default function PostDetailPage() {
   };
 
   const handleDeletePost = async () => {
-    if (!confirm('Are you sure you want to permanently delete this post?')) return;
+    if (!confirm('Are you sure you want to delete this article?')) return;
 
     try {
       const res = await fetch(`/api/posts/${post.id}`, { method: 'DELETE' });
@@ -97,7 +95,7 @@ export default function PostDetailPage() {
         alert(data.error || 'Failed to delete');
       }
     } catch {
-      alert('Network error while deleting');
+      alert('Error deleting');
     }
   };
 
@@ -111,26 +109,26 @@ export default function PostDetailPage() {
 
   if (loading) {
     return (
-      <div className="max-w-4xl mx-auto py-12 space-y-6 animate-pulse">
-        <div className="h-6 w-32 bg-white/10 rounded-lg" />
-        <div className="h-12 w-3/4 bg-white/10 rounded-xl" />
-        <div className="h-96 w-full bg-white/10 rounded-3xl" />
+      <div className="max-w-4xl mx-auto py-16 space-y-6 animate-pulse">
+        <div className="h-6 w-32 bg-surface-container rounded-full" />
+        <div className="h-12 w-3/4 bg-surface-container rounded-2xl" />
+        <div className="h-96 w-full bg-surface-container rounded-[24px]" />
       </div>
     );
   }
 
   if (!post) {
     return (
-      <div className="max-w-md mx-auto text-center py-20">
-        <h2 className="text-2xl font-bold text-white mb-2">Post Not Found</h2>
-        <p className="text-sm text-auralis-textMuted mb-6">
-          The requested article does not exist or may have been removed.
+      <div className="max-w-md mx-auto text-center py-24">
+        <h2 className="text-2xl font-bold text-on-surface mb-2">Post Not Found</h2>
+        <p className="text-sm text-on-surface-variant mb-6">
+          The requested article does not exist or has been removed.
         </p>
         <Link
           href="/"
-          className="px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-semibold inline-flex items-center gap-2"
+          className="px-6 py-2.5 rounded-full bg-primary text-on-primary text-sm font-semibold inline-flex items-center gap-2"
         >
-          <ArrowLeft className="w-4 h-4" /> Back to Feed
+          <ArrowLeft className="w-4 h-4" /> Back to Articles
         </Link>
       </div>
     );
@@ -144,81 +142,78 @@ export default function PostDetailPage() {
   });
 
   return (
-    <article className="max-w-4xl mx-auto py-4 sm:py-8">
+    <article className="max-w-4xl mx-auto py-8">
       {/* Back Button */}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-8 flex items-center justify-between">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-auralis-textMuted hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-outline hover:text-on-surface transition-colors"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Articles
         </Link>
 
-        {/* Share & Copy Link */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={handleCopyLink}
-            className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 hover:bg-white/10 text-auralis-textMuted hover:text-white border border-white/10 transition-colors flex items-center gap-1.5"
-          >
-            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Share2 className="w-3.5 h-3.5" />}
-            {copied ? 'Link Copied!' : 'Share Article'}
-          </button>
-        </div>
+        {/* Share Button */}
+        <button
+          onClick={handleCopyLink}
+          className="px-4 py-2 rounded-full text-xs font-medium bg-surface-container hover:bg-surface-container-high text-on-surface border border-outline-variant transition-colors flex items-center gap-1.5"
+        >
+          {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Share2 className="w-3.5 h-3.5" />}
+          {copied ? 'Link Copied!' : 'Share Article'}
+        </button>
       </div>
 
       {/* Header Info */}
-      <div className="space-y-4">
-        {/* Category & Tags */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-cyan-300 border border-indigo-500/30">
+      <div className="space-y-6">
+        <div className="flex items-center gap-3 flex-wrap">
+          <span className="px-3.5 py-1 rounded-full text-xs font-semibold bg-surface-container border border-outline-variant text-on-surface">
             {post.category || 'General'}
           </span>
-          <span className="text-xs text-auralis-textMuted font-mono flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-cyan-400" /> {post.readTime}
+          <span className="text-xs text-outline font-mono flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5" /> {post.readTime}
           </span>
-          <span className="text-xs text-auralis-textMuted font-mono flex items-center gap-1">
-            <Calendar className="w-3.5 h-3.5 text-indigo-400" /> {formattedDate}
+          <span className="text-xs text-outline font-mono flex items-center gap-1">
+            <Calendar className="w-3.5 h-3.5" /> {formattedDate}
           </span>
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-on-surface tracking-tighter leading-[1.1]">
           {post.title}
         </h1>
 
         {/* Excerpt */}
-        <p className="text-lg text-auralis-textMuted leading-relaxed">
+        <p className="text-lg text-on-surface-variant leading-relaxed">
           {post.excerpt}
         </p>
 
         {/* Author Card & Actions */}
-        <div className="pt-4 border-t border-white/10 flex items-center justify-between flex-wrap gap-4">
-          <div className="flex items-center gap-3">
+        <div className="pt-6 border-t border-outline-variant flex items-center justify-between flex-wrap gap-4">
+          <div className="flex items-center gap-3.5">
             <img
               src={post.authorAvatar || `https://api.dicebear.com/7.x/identicon/svg?seed=${post.authorName}`}
               alt={post.authorName}
-              className="w-11 h-11 rounded-full border border-indigo-500/40 object-cover"
+              className="w-11 h-11 rounded-full border border-outline-variant object-cover"
             />
             <div>
-              <div className="font-semibold text-white text-sm">{post.authorName}</div>
-              <div className="text-xs text-auralis-textMuted font-mono">
-                Author & Contributor
+              <div className="font-semibold text-on-surface text-sm">{post.authorName}</div>
+              <div className="text-xs text-outline font-mono">
+                Contributor
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Like Button */}
+            {/* Like Pill */}
             <button
               onClick={handleLike}
               disabled={isLiking}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
                 isLiked
-                  ? 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
-                  : 'bg-white/5 hover:bg-white/10 text-white border border-white/10'
+                  ? 'bg-rose-50 text-rose-600 border border-rose-200'
+                  : 'bg-surface-container hover:bg-surface-container-high text-on-surface border border-outline-variant'
               }`}
             >
-              <Heart className={`w-4 h-4 ${isLiked ? 'fill-rose-400' : ''}`} />
+              <Heart className={`w-4 h-4 ${isLiked ? 'fill-rose-600' : ''}`} />
               <span>{likes} {likes === 1 ? 'Like' : 'Likes'}</span>
             </button>
 
@@ -227,13 +222,13 @@ export default function PostDetailPage() {
               <div className="flex items-center gap-2">
                 <Link
                   href={`/edit/${post.id}`}
-                  className="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white text-xs font-semibold border border-white/10 flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-full border border-outline-variant bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold flex items-center gap-1.5"
                 >
-                  <Edit3 className="w-3.5 h-3.5 text-cyan-400" /> Edit Post
+                  <Edit3 className="w-3.5 h-3.5" /> Edit
                 </Link>
                 <button
                   onClick={handleDeletePost}
-                  className="px-3.5 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 text-xs font-semibold border border-rose-500/20 flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-full border border-rose-200 bg-rose-50 text-rose-600 text-xs font-semibold flex items-center gap-1.5"
                 >
                   <Trash2 className="w-3.5 h-3.5" /> Delete
                 </button>
@@ -245,7 +240,7 @@ export default function PostDetailPage() {
 
       {/* Featured Cover Image */}
       {post.coverImage && (
-        <div className="my-8 rounded-3xl overflow-hidden border border-white/10 aspect-[16/9] bg-black/60 shadow-2xl">
+        <div className="my-10 rounded-[24px] overflow-hidden border border-outline-variant aspect-[16/9] bg-surface-container shadow-sm">
           <img
             src={post.coverImage}
             alt={post.title}
@@ -255,11 +250,11 @@ export default function PostDetailPage() {
       )}
 
       {/* Main Content Body */}
-      <div className="prose prose-invert max-w-none space-y-6 text-base sm:text-lg leading-relaxed text-auralis-textLight/90">
+      <div className="space-y-6 text-base sm:text-lg leading-relaxed text-on-surface">
         {post.content.split('\n\n').map((paragraph, idx) => {
           if (paragraph.startsWith('### ')) {
             return (
-              <h3 key={idx} className="text-2xl font-bold text-white pt-4 pb-1 border-b border-white/10">
+              <h3 key={idx} className="text-2xl font-bold tracking-tight text-on-surface pt-6 pb-2 border-b border-outline-variant">
                 {paragraph.replace('### ', '')}
               </h3>
             );
@@ -267,9 +262,9 @@ export default function PostDetailPage() {
           if (paragraph.startsWith('```')) {
             const cleanCode = paragraph.replace(/```[a-z]*\n?/g, '');
             return (
-              <div key={idx} className="my-6 rounded-2xl bg-black/70 border border-white/10 p-5 font-mono text-sm overflow-x-auto text-cyan-300">
-                <div className="text-[11px] text-auralis-textMuted uppercase mb-3 flex items-center gap-2">
-                  <Terminal className="w-3.5 h-3.5 text-indigo-400" /> Code Snippet
+              <div key={idx} className="my-6 rounded-2xl bg-[#111318] border border-outline-variant/30 p-6 font-mono text-sm overflow-x-auto text-emerald-400">
+                <div className="text-[11px] text-outline uppercase mb-3 flex items-center gap-2 font-mono">
+                  <Terminal className="w-3.5 h-3.5 text-outline" /> Code Snippet
                 </div>
                 <pre>{cleanCode}</pre>
               </div>
@@ -277,7 +272,7 @@ export default function PostDetailPage() {
           }
           if (paragraph.startsWith('1. ') || paragraph.startsWith('- ')) {
             return (
-              <ul key={idx} className="list-disc pl-6 space-y-2 text-auralis-textLight/90">
+              <ul key={idx} className="list-disc pl-6 space-y-2 text-on-surface">
                 {paragraph.split('\n').map((item, itemIdx) => (
                   <li key={itemIdx}>
                     {item.replace(/^[0-9]+\.\s*|-\s*/, '')}
@@ -287,7 +282,7 @@ export default function PostDetailPage() {
             );
           }
           return (
-            <p key={idx} className="whitespace-pre-line">
+            <p key={idx} className="whitespace-pre-line text-on-surface">
               {paragraph}
             </p>
           );
@@ -296,12 +291,12 @@ export default function PostDetailPage() {
 
       {/* Tags */}
       {post.tags && post.tags.length > 0 && (
-        <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2 flex-wrap">
-          <span className="text-xs text-auralis-textMuted font-mono">Tags:</span>
+        <div className="mt-10 pt-6 border-t border-outline-variant flex items-center gap-2 flex-wrap">
+          <span className="text-xs text-outline font-mono">Tags:</span>
           {post.tags.map((tag, idx) => (
             <span
               key={idx}
-              className="text-xs font-mono px-3 py-1 rounded-lg bg-white/5 text-cyan-300 border border-white/10"
+              className="text-xs font-mono px-3 py-1 rounded-full bg-surface-container text-on-surface border border-outline-variant"
             >
               #{tag}
             </span>
