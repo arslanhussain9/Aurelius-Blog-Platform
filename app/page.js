@@ -7,17 +7,12 @@ import { useAuth } from '@/components/AuthContext';
 import { 
   Sparkles, 
   Search, 
-  Filter, 
   PenSquare, 
   SlidersHorizontal, 
-  Activity, 
-  Layers, 
-  Zap, 
-  Terminal, 
-  Radio, 
-  ArrowRight,
-  TrendingUp,
-  Cpu
+  BookOpen, 
+  MessageSquare, 
+  Users, 
+  CheckCircle2
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -28,7 +23,7 @@ export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortOrder, setSortOrder] = useState('latest');
 
-  const categories = ['All', 'AI Infrastructure', 'Web Engineering', 'SaaS Strategy'];
+  const categories = ['All', 'Web Dev', 'Tutorials', 'Design'];
 
   useEffect(() => {
     fetchPosts();
@@ -62,25 +57,24 @@ export default function HomePage() {
     <div className="space-y-12">
       {/* Hero Section */}
       <section className="relative rounded-3xl p-6 sm:p-10 lg:p-12 overflow-hidden border border-indigo-500/20 bg-gradient-to-b from-auralis-card/90 via-auralis-bg to-auralis-card/40 shadow-2xl">
-        {/* Ambient background glows */}
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-indigo-600/15 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-cyan-500/15 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-mono mb-6">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            <span>AURALIS // ENTERPRISE AI VOICE INFRASTRUCTURE</span>
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <span>FULL-STACK BLOGGING & COMMUNITY PLATFORM</span>
           </div>
 
           {/* Heading */}
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Engineering Sub-80ms Real-Time Voice & <span className="gradient-text">Full-Stack Systems</span>
+            Share Your Stories, Ideas & <span className="gradient-text">Engage in Discussions</span>
           </h1>
 
           {/* Subtitle */}
           <p className="mt-4 text-base sm:text-lg text-auralis-textMuted leading-relaxed">
-            A developer publication and community platform covering streaming acoustic tokens, WebSockets, RESTful API design, and modern full-stack architectures.
+            A modern full-stack blogging platform with user registration, authentication, post management, and interactive comments.
           </p>
 
           {/* Action CTAs */}
@@ -90,15 +84,7 @@ export default function HomePage() {
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-semibold text-sm shadow-glow-indigo transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
             >
               <PenSquare className="w-4 h-4" />
-              Publish an Article
-            </Link>
-
-            <Link
-              href="/stitch"
-              className="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium text-sm transition-all flex items-center gap-2"
-            >
-              <Layers className="w-4 h-4 text-cyan-400" />
-              Stitch MCP Setup
+              Write an Article
             </Link>
 
             {!user && (
@@ -113,38 +99,38 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Live Infrastructure Telemetry Cards */}
+        {/* Platform Feature Badges */}
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10 pt-8">
           <div className="p-4 rounded-xl bg-black/40 border border-white/5">
             <div className="text-xs text-auralis-textMuted font-mono flex items-center gap-1.5">
-              <Zap className="w-3.5 h-3.5 text-cyan-400" /> Latency P95
+              <BookOpen className="w-3.5 h-3.5 text-cyan-400" /> Content CRUD
             </div>
-            <div className="text-2xl font-bold text-white mt-1 font-mono">68 ms</div>
-            <div className="text-[11px] text-emerald-400 font-mono mt-0.5">● Sub-100ms Target Met</div>
+            <div className="text-xl font-bold text-white mt-1">Full Posts</div>
+            <div className="text-[11px] text-emerald-400 font-mono mt-0.5">Create, Edit & Delete</div>
           </div>
 
           <div className="p-4 rounded-xl bg-black/40 border border-white/5">
             <div className="text-xs text-auralis-textMuted font-mono flex items-center gap-1.5">
-              <Radio className="w-3.5 h-3.5 text-indigo-400" /> Concurrent Audio
+              <MessageSquare className="w-3.5 h-3.5 text-indigo-400" /> Discussions
             </div>
-            <div className="text-2xl font-bold text-white mt-1 font-mono">52.4 k</div>
-            <div className="text-[11px] text-auralis-textMuted font-mono mt-0.5">Active Channels</div>
+            <div className="text-xl font-bold text-white mt-1">Comments</div>
+            <div className="text-[11px] text-cyan-400 font-mono mt-0.5">Real-time & Interactive</div>
           </div>
 
           <div className="p-4 rounded-xl bg-black/40 border border-white/5">
             <div className="text-xs text-auralis-textMuted font-mono flex items-center gap-1.5">
-              <Cpu className="w-3.5 h-3.5 text-purple-400" /> Architecture
+              <Users className="w-3.5 h-3.5 text-purple-400" /> Security
             </div>
-            <div className="text-2xl font-bold text-white mt-1 font-mono">REST + WS</div>
-            <div className="text-[11px] text-cyan-400 font-mono mt-0.5">Full Duplex Audio</div>
+            <div className="text-xl font-bold text-white mt-1">Auth & JWT</div>
+            <div className="text-[11px] text-auralis-textMuted font-mono mt-0.5">Bcrypt Password Hashing</div>
           </div>
 
           <div className="p-4 rounded-xl bg-black/40 border border-white/5">
             <div className="text-xs text-auralis-textMuted font-mono flex items-center gap-1.5">
-              <Layers className="w-3.5 h-3.5 text-emerald-400" /> Deployment
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Deployment
             </div>
-            <div className="text-2xl font-bold text-white mt-1 font-mono">Vercel</div>
-            <div className="text-[11px] text-emerald-400 font-mono mt-0.5">Serverless Ready</div>
+            <div className="text-xl font-bold text-white mt-1">Vercel Ready</div>
+            <div className="text-[11px] text-emerald-400 font-mono mt-0.5">Production Tested</div>
           </div>
         </div>
       </section>

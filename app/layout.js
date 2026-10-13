@@ -4,8 +4,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'Auralis | Enterprise AI Voice Infrastructure & Full-Stack Platform',
-  description: 'Enterprise AI Voice Infrastructure, developer articles, real-time voice streaming, and full-stack blogging platform with user authentication and comments.',
+  title: 'DevBlog | Full-Stack Blogging Platform with Comments',
+  description: 'A modern full-stack blogging platform where users can register, publish posts, and interact through comments.',
 };
 
 export default function RootLayout({ children }) {
